@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--通过静态工厂方法实例化bean-->
+    <bean id="instantiatingBeanByStaticFactoryMethod"
+          class="com.kaizhang.spring.beans.instantiatingbean.StaticFactoryMethodInstantiatingBean"
+          factory-method="staticFactoryMethod"/>
+
+    <bean id="instantiatingBeanByStaticFactoryMethod2"
+          class="com.kaizhang.spring.beans.instantiatingbean.StaticFactoryMethodInstantiatingBean"
+          factory-method="staticFactoryMethod2">
+        <constructor-arg value="aaa"/>
+    </bean>
+</beans>

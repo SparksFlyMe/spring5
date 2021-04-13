@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="lazyInitTest" class="com.kaizhang.spring.beans.lazyinit.LazyInit" lazy-init="true"/>
+    <!-- 引入另一个配置文件用import -->
+    <import resource="common.xml"/>
+</beans>

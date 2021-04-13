@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- id: 是标识单个 bean 定义的字符串-->
+    <!-- class: 定义 bean 的类型，并使用完全限定名 classname-->
+    <bean id="student" class="com.kaizhang.spring.beans.Student">
+        <property name="age" value="20"/>
+        <property name="name" value="张三"/>
+    </bean>
+
+    <bean id="teacher" class="com.kaizhang.spring.beans.Teacher">
+        <property name="name">
+            <!-- Idref 元素只是一种防错的方法，用于将容器中另一个bean的id(字符串值——而不是引用)传递给一个
+            < constructor-arg/> 或 < property/> 元素，用来校验有没有拼写错bean的id-->
+            <idref bean="people"/>
+        </property>
+        <property name="age" value="25"/>
+    </bean>
+
+    <bean id="people" class="com.kaizhang.spring.beans.People">
+        <!-- Ref 元素是 < constructor-arg/> 或 < property/> 定义元素中的最后一个元素。在这里，将 bean 的指定属性的值设置为对容器管理的另一个 bean (合作者)的引用。引用的 bean 是要设置其属性的 bean 的依赖项，并且在设置属性之前根据需要初始化它。(如果合作者是单例 bean，那么它可能已经被容器初始化了。)所有引用最终都是对另一个对象的引用。作用域和验证取决于是否通过 bean 或父属性指定其他对象的 ID 或名称-->
+        <!-- set方法注入-->
+        <property name="student" ref="student"/>
+        <!-- 有参构造注入：通过参数顺序 -->
+        <constructor-arg index="0" ref="teacher"/>
+        <!-- 有参构造注入：通过参数名称 -->
+        <constructor-arg name="height" value="123"/>
+    </bean>
+</beans>

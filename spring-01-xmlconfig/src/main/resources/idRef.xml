@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="idRef" class="com.kaizhang.spring.beans.idref.IdRef"/>
+
+    <!-- Idref 元素只是一种防错的方法，用于将容器中另一个bean的id(字符串值——而不是引用)传递给一个
+            < constructor-arg/> 或 < property/> 元素，用来校验有没有拼写错bean的id-->
+    <bean id="common" class="com.kaizhang.spring.beans.Common">
+        <property name="val">
+            <idref bean="idRef"/>
+        </property>
+    </bean>
+</beans>
