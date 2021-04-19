@@ -1,7 +1,7 @@
 package com.kaizhang.spring.beans.instantiatingbean;
 
 /**
- * bean初始化的集中方式
+ * bean初始化的几种方式
  *
  * @author kaizhang
  * @date 2021-04-08 23:43

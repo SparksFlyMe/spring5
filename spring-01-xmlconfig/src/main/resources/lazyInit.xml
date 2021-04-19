@@ -4,7 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="lazyInitTest" class="com.kaizhang.spring.beans.lazyinit.LazyInit" lazy-init="true"/>
+    <bean id="lazyInitNo" class="com.kaizhang.spring.beans.lazyinit.NoLazyInit"/>
+    <bean id="lazyInitYes" class="com.kaizhang.spring.beans.lazyinit.LazyInit" lazy-init="true"/>
     <!-- 引入另一个配置文件用import -->
     <import resource="common.xml"/>
 </beans>

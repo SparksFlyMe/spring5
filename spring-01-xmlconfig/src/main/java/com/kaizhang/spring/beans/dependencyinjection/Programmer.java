@@ -1,4 +1,4 @@
-package com.kaizhang.spring.beans;
+package com.kaizhang.spring.beans.dependencyinjection;
 
 /**
  * @author kaizhang

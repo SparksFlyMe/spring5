@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--设置为懒加载，当调用时，懒加载的managerBean也会初始化-->
+    <bean id="beanOne" class="com.kaizhang.spring.beans.dependson.BeanOne" depends-on="managerBean" lazy-init="true">
+
+    </bean>
+
+    <bean id="managerBean" class="com.kaizhang.spring.beans.dependson.ManagerBean" lazy-init="true"/>
+</beans>

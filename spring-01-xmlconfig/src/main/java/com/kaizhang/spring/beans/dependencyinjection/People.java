@@ -1,4 +1,4 @@
-package com.kaizhang.spring.beans;
+package com.kaizhang.spring.beans.dependencyinjection;
 
 /**
  * @author kaizhang
@@ -13,10 +13,19 @@ public class People {
 
     private String height;
 
+    /**
+     * 通过set方法注入 {@link student}
+     */
     public void setStudent(Student student) {
         this.student = student;
     }
 
+    /**
+     * 通过构造方法-有参构造注入 {@link teacher} {@link height}
+     *
+     * @param teacher
+     * @param height
+     */
     public People(Teacher teacher, String height) {
         this.teacher = teacher;
         this.height = height;

@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="common" class="com.kaizhang.spring.beans.Common"/>
+    <bean id="common" class="com.kaizhang.spring.beans.dependencyinjection.Common"/>
 </beans>

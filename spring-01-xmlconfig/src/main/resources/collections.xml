@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="propertiesBean" class="com.kaizhang.spring.beans.collections.CollectionsBean">
+        <!-- properties -->
+        <property name="myProperties">
+            <props>
+                <prop key="name">张三</prop>
+                <prop key="age">李四</prop>
+                <prop key="nationality">中国</prop>
+            </props>
+        </property>
+
+        <!-- properties -->
+        <property name="myList">
+            <list>
+               <value>1</value>
+               <value>2</value>
+               <value>3</value>
+            </list>
+        </property>
+
+        <property name="myMap">
+            <map>
+                <entry key="name" value="zhangsan"/>
+                <entry key="age" value="23"/>
+            </map>
+        </property>
+
+        <property name="mySet">
+            <set>
+                <value>2</value>
+                <value>3</value>
+            </set>
+        </property>
+    </bean>
+    <import resource="common.xml"/>
+</beans>

@@ -6,14 +6,18 @@
 
 
     <!-- 通过实例方法工厂实例化bean：调用现有 bean 的非静态方法来创建新 bean -->
+
+
     <bean id="beanFactory" class="com.kaizhang.spring.beans.instantiatingbean.BeanFactory">
 
     </bean>
 
     <!-- 调用现有bean（beanFactory）的非静态方法（getStaticFactoryMethodInstantiatingBean）来创建新 bean（StaticFactoryMethodInstantiatingBean）-->
+    <!-- 这里使用factory-bean 属性，而不像静态工厂方法使用class属性-->
     <bean id="instantiatingBeanByInstanceFactory" factory-bean="beanFactory"
           factory-method="getStaticFactoryMethodInstantiatingBean"/>
 
+    <!-- 一个工厂类也可以容纳多个工厂方法  -->
     <!-- 调用现有bean（beanFactory）的非静态方法（getInstantiatingBean）来创建新 bean（InstantiatingBean）-->
     <bean id="instantiatingBeanByInstanceFactory2" factory-bean="beanFactory" factory-method="getInstantiatingBean"/>
 

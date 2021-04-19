@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 内部bean：< property/> 或 < constructor-arg/>中定义了一个内部bean，内部 bean 定义不需要定义 ID 或名称-->
+    <bean id="outerBean" class="com.kaizhang.spring.beans.innerbean.OuterBean">
+        <property name="name" value="张哈哈"/>
+        <property name="innerBean">
+            <bean class="com.kaizhang.spring.beans.innerbean.InnerBean">
+                <property name="age" value="22"/>
+            </bean>
+        </property>
+    </bean>
+</beans>
