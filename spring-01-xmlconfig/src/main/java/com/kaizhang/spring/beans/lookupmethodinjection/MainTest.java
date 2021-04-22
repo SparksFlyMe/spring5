@@ -19,13 +19,13 @@ public class MainTest {
     /**
      * lookup-method实现方式说明：
      * <bean class="beanClass">
-     *      <lookup-method name="method" bean="non-singleton-bean"/>
+     * <lookup-method name="method" bean="non-singleton-bean"/>
      * </bean>
-     *
+     * <p>
      * method是beanClass中的一个方法，beanClass和method是不是抽象都无所谓，不会影响CGLIB的动态代理，根据项目实际需求去定义。
      * non-singleton-bean指的是lookup-method中bean属性指向的必须是一个非单例模式的bean，当然如果不是也不会报错，只是每次得到的都是
      * 相同引用的bean（同一个实例），这样用lookup-method就没有意义了。
-     *
+     * <p>
      * 另外对于method在代码中的签名有下面的标准：
      * <public|protected> [abstract] <return-type> theMethodName(no-arguments);
      * public|protected要求方法必须是可以被子类重写和调用的；
@@ -37,11 +37,11 @@ public class MainTest {
     public void lookupMethodInjectionTest() {
         ApplicationContext app = new ClassPathXmlApplicationContext("lookupMethodInjection.xml");
         FruitPlate fp1 = (FruitPlate) app.getBean("fruitPlate1");
-        FruitPlate fp2 = (FruitPlate) app.getBean("fruitPlate2");
         Fruit fruit1 = fp1.getFruit();
         Fruit fruit2 = fp1.getFruit();
         // 下面结果为false，因为apple bean的 scope="prototype"
         System.out.println(fruit1.equals(fruit2));
+        FruitPlate fp2 = (FruitPlate) app.getBean("fruitPlate2");
         fp2.getFruit();
 
         /**
@@ -58,12 +58,18 @@ public class MainTest {
     }
 
     @Test
-    public void test() {
-        ApplicationContext app = new ClassPathXmlApplicationContext("loolupMethodInjection1.xml");
+    public void lookupMethodInjection1Test() {
+        ApplicationContext app = new ClassPathXmlApplicationContext("lookupMethodInjection.xml");
         B b = app.getBean("b", B.class);
         B b2 = app.getBean("b", B.class);
-        System.out.println(b ==b2);
+        System.out.println((b == b2) + "===因为b是单例的，所以为true");
         // 在B中引入A，虽然bean a 的 scope="prototype" ，因为bean b是单例的，所以下面结果为true
-        System.out.println(b.getA() == b2.getA());
+        System.out.println((b.getA() == b2.getA()) + "===bean a 的 scope=\"prototype\" ，因为bean b是单例的，所以获得的a是相同对象，结果为true");
+
+        B c = app.getBean("c", B.class);
+        B c2 = app.getBean("c", B.class);
+        System.out.println((c == c2) + "===因为c是单例的，所以为true");
+        // 在B中引入A，通过lookup Method使得每次获得的a是不同对象，结果为false
+        System.out.println((c.getA() == c2.getA()) + "===通过lookup Method使得每次获得的a是不同对象，结果为false");
     }
 }
