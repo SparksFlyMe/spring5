@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--autowire-candidate 属性设置为false，其他的bean在按照类型（byType）注入这个bean时，忽略当前的bean。 默认值true（不忽略）-->
+    <!--项目中有两个BeanA，如果此处不用 autowire-candidate 属性设置为false，则会报错，找到两个bean-->
+    <bean id="beanC" class="com.kaizhang.spring.beans.autowirecandidate.BeanA" autowire-candidate="false">
+        <property name="name" value="beanC"/>
+    </bean>
+
+    <bean id="beanA" class="com.kaizhang.spring.beans.autowirecandidate.BeanA">
+        <property name="name" value="beanA"/>
+    </bean>
+
+    <bean id="beanB" class="com.kaizhang.spring.beans.autowirecandidate.BeanB" autowire="constructor">
+
+    </bean>
+</beans>
