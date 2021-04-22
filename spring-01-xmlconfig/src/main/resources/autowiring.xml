@@ -36,8 +36,8 @@
         <property name="name" value="byType"/>
     </bean>
 
-    <!-- 如果此处放开，则根据byType装配就会失败，因为存在多个相同类型的bean对象（Autowiring2） -->
-    <!--<bean id="byType2" class="com.kaizhang.spring.beans.autowiring.Autowiring2">
+    <!-- 如果此处放开，则根据byType装配就会失败，因为存在多个相同类型的bean对象（ByType） -->
+    <!--<bean id="byType2" class="com.kaizhang.spring.beans.autowiring.ByType">
         <property name="name" value="byType"/>
     </bean>-->
 
