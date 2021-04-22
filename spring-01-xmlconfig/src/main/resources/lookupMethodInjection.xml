@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--这是两个非单例模式的bean-->
+    <bean id="apple" class="com.kaizhang.spring.beans.lookupmethodinjection.Apple" scope="prototype"/>
+    <bean id="banner" class="com.kaizhang.spring.beans.lookupmethodinjection.Banner" scope="prototype"/>
+
+    <bean id="fruitPlate1" class="com.kaizhang.spring.beans.lookupmethodinjection.FruitPlate">
+        <lookup-method name="getFruit" bean="apple"/>
+    </bean>
+
+    <bean id="fruitPlate2" class="com.kaizhang.spring.beans.lookupmethodinjection.FruitPlate">
+        <lookup-method name="getFruit" bean="banner"/>
+    </bean>
+</beans>
