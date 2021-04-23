@@ -23,4 +23,8 @@
     <bean id="c" class="com.kaizhang.spring.beans.lookupmethodinjection.B" autowire="byName">
         <lookup-method name="getA" bean="a"/>
     </bean>
+
+    <bean id="d" class="com.kaizhang.spring.beans.lookupmethodinjection.D">
+        <lookup-method name="getDifferentA" bean="a"/>
+    </bean>
 </beans>

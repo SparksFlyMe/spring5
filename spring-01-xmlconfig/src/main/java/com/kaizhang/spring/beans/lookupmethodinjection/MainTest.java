@@ -21,11 +21,11 @@ public class MainTest {
      * <bean class="beanClass">
      * <lookup-method name="method" bean="non-singleton-bean"/>
      * </bean>
-     * <p>
+     *
      * method是beanClass中的一个方法，beanClass和method是不是抽象都无所谓，不会影响CGLIB的动态代理，根据项目实际需求去定义。
      * non-singleton-bean指的是lookup-method中bean属性指向的必须是一个非单例模式的bean，当然如果不是也不会报错，只是每次得到的都是
      * 相同引用的bean（同一个实例），这样用lookup-method就没有意义了。
-     * <p>
+     *
      * 另外对于method在代码中的签名有下面的标准：
      * <public|protected> [abstract] <return-type> theMethodName(no-arguments);
      * public|protected要求方法必须是可以被子类重写和调用的；
@@ -71,5 +71,14 @@ public class MainTest {
         System.out.println((c == c2) + "===因为c是单例的，所以为true");
         // 在B中引入A，通过lookup Method使得每次获得的a是不同对象，结果为false
         System.out.println((c.getA() == c2.getA()) + "===通过lookup Method使得每次获得的a是不同对象，结果为false");
+    }
+
+    @Test
+    public void lookupMethodInjection2Test() {
+        ApplicationContext app = new ClassPathXmlApplicationContext("lookupMethodInjection.xml");
+        D d = app.getBean("d", D.class);
+        D d2 = app.getBean("d", D.class);
+        System.out.println((d.equals(d2)) + "===因为d是单例的，所以为true");
+        System.out.println((d.getDifferentA().equals(d2.getDifferentA())) + "===通过lookup Method使得每次获得的a是不同对象，结果为false");
     }
 }
