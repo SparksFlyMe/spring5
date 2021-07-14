@@ -1,7 +1,10 @@
 package com.kaizhang.spring.beans.autowiredannotation;
 
+import com.kaizhang.spring.beans.autowiringwithqualifiers.AutowiringWithQualifier;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
@@ -22,6 +25,8 @@ import java.util.Arrays;
  * @author kaizhang
  * @date 2021-05-16 16:21
  */
+@ComponentScan(includeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION)},
+excludeFilters = @ComponentScan.Filter(AutowiringWithQualifier.class))
 public class MainTest {
 
     /**

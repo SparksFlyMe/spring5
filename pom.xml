@@ -11,6 +11,8 @@
     <modules>
         <module>spring-01-xmlconfig</module>
         <module>spring-02-annotationConfig</module>
+        <module>spring-03-typeConversion</module>
+        <module>spring-04-proxy</module>
     </modules>
     <properties>
         <junit-version>4.13.2</junit-version>
@@ -23,6 +25,12 @@
             <artifactId>junit-jupiter</artifactId>
             <version>RELEASE</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.3</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
