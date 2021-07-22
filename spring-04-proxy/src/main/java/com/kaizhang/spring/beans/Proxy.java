@@ -13,6 +13,7 @@ public class Proxy implements Rent {
         this.host = host;
     }
 
+    @Override
     public void rent() {
         host.rent();
     }

@@ -31,6 +31,7 @@ public class ProxyInvocationHandler implements InvocationHandler {
      * method :代理类的调用处理程序的方法对象 .
      * 处理代理实例上的方法调用并返回结果
      */
+    @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("proxy: " + proxy.getClass().getName());
         System.out.println("method: " + method.getName());
